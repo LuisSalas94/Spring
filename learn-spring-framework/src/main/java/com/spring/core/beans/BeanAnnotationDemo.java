@@ -15,6 +15,16 @@ class Student {
         address.print();
     }
 
+    //Init method
+    public void init() {
+        System.out.println("Initialization logic");
+    }
+
+    //Destroy method
+    public void destroy() {
+        System.out.println("Destruction logic");
+    }
+
 }
 class Address {
     public void print() {
@@ -29,21 +39,22 @@ class AppConfig {
     public Address address() {
         return new Address();
     }
-    @Bean(name = {"studentBean", "studentDemo"})
+    @Bean(name = "studentBean", initMethod = "init", destroyMethod = "destroy")
     public Student student() {
         return new Student(address());
     }
 }
 public class BeanAnnotationDemo {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        //Student student = applicationContext.getBean(Student.class);
-        // Call bean using its name
-        Student student = (Student) applicationContext.getBean("studentDemo");
-        String[] beanNames = applicationContext.getBeanDefinitionNames();
-        for(String bean: beanNames) {
-            System.out.println(bean);
+        try( var applicationContext = new AnnotationConfigApplicationContext(AppConfig.class)) {
+            //Student student = applicationContext.getBean(Student.class);
+            // Call bean using its name
+            Student student = (Student) applicationContext.getBean("studentBean");
+            String[] beanNames = applicationContext.getBeanDefinitionNames();
+            for(String bean: beanNames) {
+                System.out.println(bean);
+            }
+            student.print();
         }
-        student.print();
     }
 }
