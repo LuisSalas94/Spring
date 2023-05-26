@@ -36,16 +36,15 @@ public class Demo {
         this.dependencyC = dependencyC;
     }
 
-
-    public void setDependencyA(DependencyA dependencyA) {
-        this.dependencyA = dependencyA;
-    }
-
-    public void setDependencyB(DependencyB dependencyB) {
-        this.dependencyB = dependencyB;
-    }
-
-    public void setDependencyC(DependencyC dependencyC) {
-        this.dependencyC = dependencyC;
-    }
+//    public void setDependencyA(DependencyA dependencyA) {
+//        this.dependencyA = dependencyA;
+//    }
+//
+//    public void setDependencyB(DependencyB dependencyB) {
+//        this.dependencyB = dependencyB;
+//    }
+//
+//    public void setDependencyC(DependencyC dependencyC) {
+//        this.dependencyC = dependencyC;
+//    }
 }
