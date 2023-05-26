@@ -9,17 +9,30 @@ public class MessageSender {
     private MessageService messageService;
     private MessageService smsService;
 
-    //@Autowired
-    public MessageSender(@Qualifier("emailService") MessageService messageService) {
+//    //@Autowired
+//    public MessageSender(@Qualifier("emailService") MessageService messageService) {
+//        this.messageService = messageService;
+//        System.out.println("Constructor based dependency injection 1");
+//    }
+//
+//    @Autowired
+//    public MessageSender(@Qualifier("emailService") MessageService messageService, MessageService smsService) {
+//        this.messageService = messageService;
+//        this.smsService = smsService;
+//        System.out.println("Constructor based dependency injection 2");
+//    }
+
+    // Setter Based Dependency Injection
+    @Autowired
+    public void setMessageService(@Qualifier("emailService") MessageService messageService) {
         this.messageService = messageService;
-        System.out.println("Constructor based dependency injection 1");
+        System.out.println("Setter based dependency injection 1");
     }
 
     @Autowired
-    public MessageSender(@Qualifier("emailService") MessageService messageService, MessageService smsService) {
-        this.messageService = messageService;
+    public void setSmsService(MessageService smsService) {
         this.smsService = smsService;
-        System.out.println("Constructor based dependency injection 2");
+        System.out.println("Setter based dependency injection 2");
     }
 
     public void sendMessage(String message) {
